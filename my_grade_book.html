@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Grade Book</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background: #f3f3f3;
+    color: #171717;
+  }
+  .top {
+    background: white;
+    border-bottom: 1px solid #aaa;
+    padding: 18px 16px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+  .nav {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 12px;
+  }
+  .menu, .logout {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .title {
+    font-size: 23px;
+    font-weight: 750;
+    text-align: center;
+    flex: 1;
+  }
+  .date {
+    text-align:center;
+    font-size: 17px;
+    padding-top: 16px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 10px 100px; }
+  .book {
+    background: #eee;
+    border: 1px solid #999;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 0;
+  }
+  .book-title {
+    background: white;
+    border-bottom: 1px solid #999;
+    padding: 22px 16px;
+    font-size: 31px;
+    font-weight: 500;
+  }
+  .selectors {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    background:white;
+    border-bottom:1px solid #aaa;
+  }
+  .selector {
+    padding: 17px 12px;
+    font-size: 17px;
+    border-right: 1px solid #aaa;
+  }
+  .selector:last-child { border-right: 0; }
+  .grid {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 16px;
+  }
+  .card {
+    min-height: 205px;
+    border-radius: 15px;
+    padding: 13px 11px 10px;
+    color:white;
+    position:relative;
+    overflow:hidden;
+    box-shadow: 0 1px 2px #999;
+  }
+  .card::after {
+    content:"";
+    position:absolute;
+    inset: 58px 10px 10px;
+    border: 10px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    transform: rotate(-1deg);
+    pointer-events:none;
+  }
+  .course { font-weight:800; font-size:18px; text-align:center; min-height:45px; }
+  .score { position:relative; z-index:2; text-align:right; font-size:18px; font-weight:700; margin-top:2px; }
+  .grade { position:relative; z-index:2; text-align:center; font-size:65px; font-weight:700; margin-top:15px; }
+  .teacher { position:absolute; z-index:2; bottom:10px; left:10px; right:10px; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .c1 { background:#076077; } .c2 { background:#0b3d91; } .c3 { background:#28106b; }
+  .c4 { background:#4a125d; } .c5 { background:#64142d; } .c6 { background:#a52208; }
+  .c7 { background:#8f3500; } .c8 { background:#a56700; }
+
+  .bottom {
+    position:fixed; bottom:0; left:0; right:0;
+    background:white; border-top:1px solid #ccc;
+    display:flex; justify-content:space-around;
+    padding:10px 4px 8px;
+  }
+  .bottom div { text-align:center; font-size:12px; }
+  .icon { font-size:26px; display:block; margin-bottom:3px; }
+  @media (max-width: 650px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .card { min-height: 185px; }
+    .title { font-size:20px; }
+    .book-title { font-size:28px; }
+  }
+  @media (max-width: 420px) {
+    .grid { grid-template-columns: repeat(2, 1fr); gap:9px; padding:10px; }
+    .card { min-height:175px; border-radius:13px; }
+    .course { font-size:15px; }
+    .grade { font-size:57px; }
+    .score { font-size:16px; }
+    .teacher { font-size:12px; }
+    .date { font-size:15px; }
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="nav">
+    <div class="menu">☰</div>
+    <div class="title">Welcome, Carnel Gordon</div>
+    <div class="logout">↪</div>
+  </div>
+  <div class="date">Date: 10/02/2026 &nbsp; Meeting Day: A</div>
+</header>
+
+<main class="wrap">
+  <section class="book">
+    <div class="book-title">A<sup>+</sup> Grade Book</div>
+    <div class="selectors">
+      <div class="selector">Azalea Gardens Middle School⌄</div>
+      <div class="selector">Quarter 1⌄</div>
+    </div>
+
+    <div class="grid">
+      <article class="card c1"><div class="course">1:SOC STDY 8</div><div class="score">79</div><div class="grade">C+</div><div class="teacher">Brennetta Gregory</div></article>
+      <article class="card c2"><div class="course">2:SCIENCE 8</div><div class="score">83.61</div><div class="grade">B</div><div class="teacher">Teneil Hunter</div></article>
+      <article class="card c3"><div class="course">3:PREALG 8 - SB</div><div class="score">71.04</div><div class="grade">C-</div><div class="teacher">Sarah Yashaahla</div></article>
+      <article class="card c4"><div class="course">4:MATH SUPPORT 8</div><div class="score">83.26</div><div class="grade">B</div><div class="teacher">Sarah Yashaahla</div></article>
+      <article class="card c5"><div class="course">5:NUTRWELL</div><div class="score">98.43</div><div class="grade">A</div><div class="teacher">Caitlyn Stokes</div></article>
+      <article class="card c6"><div class="course">6:HPE 8</div><div class="score">100</div><div class="grade">A</div><div class="teacher">Dominic Grooms</div></article>
+      <article class="card c7"><div class="course">7:LANG ARTS 8 - SB</div><div class="score">75.23</div><div class="grade">C</div><div class="teacher">Cynthia Dent</div></article>
+      <article class="card c8"><div class="course">8:READ SUPPORT 8</div><div class="score">80.77</div><div class="grade">B-</div><div class="teacher">Cynthia Dent</div></article>
+    </div>
+  </section>
+</main>
+
+<nav class="bottom">
+  <div><span class="icon">▣</span>Student ID Card</div>
+  <div><span class="icon">▣</span>Calendar</div>
+  <div><span class="icon">⌂</span>Events</div>
+</nav>
+</body>
+</html>
